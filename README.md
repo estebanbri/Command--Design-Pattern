@@ -1,5 +1,7 @@
 # Command--Design-Pattern
 
+Cada Command representa un request que encapsula datos.
+
 ### Fuente 1:
 
 - **Command**: Declares an interface for executing an operation.

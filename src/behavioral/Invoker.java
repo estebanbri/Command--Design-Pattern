@@ -1,19 +1,18 @@
 package behavioral;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Invoker {
 
-    private List<ICommand> commands = new ArrayList();
+    private Map<String, ICommand> commands = new HashMap();
 
-    public void addCommand(ICommand command){
-        this.commands.add(command);
+    public void addCommand(String commandName, ICommand command){
+        this.commands.put(commandName, command);
     }
 
-    public void execute(){
-        for(ICommand command : commands){
-            command.execute();
-        }
+    public void execute(String commandName){
+        this.commands.get(commandName).execute();
     }
+
 }

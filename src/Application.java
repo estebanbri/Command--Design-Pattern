@@ -14,21 +14,36 @@ public class Application {
 
     public static void main(String[] args) {
 
+        /**
+         *  SETEO DEL AMBIENTE
+         */
+        // Invoker
         Invoker invoker = new Invoker();
-        // Saldo inicial $100
+
+        // Reciever -> Saldo inicial $100
         Reciever1 reciever1 = new Reciever1(100);
 
-        invoker.addCommand(new DepositarCommand1(reciever1, 20));
-        invoker.addCommand(new RetirarCommand2(reciever1, 5));
-
-        List<ICommand> commandListDepositar = Arrays.asList(
+        // Commands
+        ICommand depositarCommand = new DepositarCommand1(reciever1, 20);
+        ICommand retirarCommand = new RetirarCommand2(reciever1, 5);
+        ICommand superCommand = new SuperCommand(Arrays.asList(
                 new DepositarCommand1(reciever1, 10),
-                new DepositarCommand1(reciever1, 10));
-        // Idem anterior en vez de pasarlo como comandos individuales lo pasamos como supercomando o macro
-        invoker.addCommand(new SuperCommand(commandListDepositar));
+                new DepositarCommand1(reciever1, 10)));
+        ICommand cerrarCommand = new CerrarOperacionCommand3(reciever1);
 
-        invoker.addCommand(new CerrarOperacionCommand3(reciever1));
+        // Invoker(Command)
+        invoker.addCommand("depositar", depositarCommand);
+        invoker.addCommand("retirar", retirarCommand);
+        invoker.addCommand("super-command", superCommand);
+        invoker.addCommand("cerrar-operacion", cerrarCommand);
 
-        invoker.execute();
+        /**
+         *  Ejecucion de los comandos de los comandos uno a uno especifando el orden pudiendo delay cada ejecucion si quisieras
+         */
+        invoker.execute("depositar");
+        invoker.execute("retirar");
+        invoker.execute("super-command");
+        invoker.execute("cerrar-operacion");
+
     }
 }

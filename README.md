@@ -2,6 +2,8 @@
 
 Cada Command representa un request que encapsula datos.
 
+A Command pattern is an object behavioral pattern that allows us to achieve complete decoupling between the sender and the receiver. (A sender is an object that invokes an operation, and a receiver is an object that receives the request to execute a certain operation. With decoupling, the sender has no knowledge of the Receiver's interface.) The term request here refers to the command that is to be executed. The Command pattern also allows us to vary when and how a request is fulfilled. Therefore, a Command pattern provides us flexibility as well as extensibility.
+
 ### Fuente 1:
 
 - **Command**: Declares an interface for executing an operation.

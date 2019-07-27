@@ -3,7 +3,7 @@ package behavioral;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Invoker {
+public class InvokerMap {
 
     private Map<String, ICommand> commands = new HashMap();
 

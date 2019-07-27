@@ -1,29 +1,31 @@
 import behavioral.ICommand;
-import behavioral.Invoker;
+import behavioral.InvokerMap;
 import behavioral.Reciever1;
 import behavioral.SuperCommand;
-import behavioral.impl.DepositarCommand1;
 import behavioral.impl.CerrarOperacionCommand3;
+import behavioral.impl.DepositarCommand1;
 import behavioral.impl.RetirarCommand2;
 
 import java.util.Arrays;
-import java.util.List;
 
-
-public class Application {
-
+/**
+ *  Este cliente usa el invoker que agrega cada comando en una Map
+ *  es decir asocia una key a cada comando concreto asi al momento
+ *  de ejecutar querer ejecutar dicho comando podemos ubicarlo por dicha key
+ */
+public class Cliente1 {
     public static void main(String[] args) {
 
         /**
          *  SETEO DEL AMBIENTE
          */
         // Invoker
-        Invoker invoker = new Invoker();
+        InvokerMap invoker = new InvokerMap();
 
         // Reciever -> Saldo inicial $100
         Reciever1 reciever1 = new Reciever1(100);
 
-        // Commands
+        // Commands  --- = REQUESTS  ---
         ICommand depositarCommand = new DepositarCommand1(reciever1, 20);
         ICommand retirarCommand = new RetirarCommand2(reciever1, 5);
         ICommand superCommand = new SuperCommand(Arrays.asList(
@@ -44,6 +46,5 @@ public class Application {
         invoker.execute("retirar");
         invoker.execute("super-command");
         invoker.execute("cerrar-operacion");
-
     }
 }

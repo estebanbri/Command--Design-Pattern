@@ -11,17 +11,17 @@ public class Cliente {
         // INVOKER <-> COMMAND/REQUEST <-> TARGET/RECIEVER (el TARGET que tiene el codigo de las acciones concretas)
 
         public static void main(String[] args) {
-            // Creo el INVOKER
+
+            // 1. Creo el INVOKER
             MenuOpciones menu = new MenuOpciones();
-            // Creo el  TARGET o RECIEVER
+            // 2. Creo el  TARGET o RECIEVER
             Documento documento = new Documento();
 
-            // Bindeo los COMMANDS al INVOKER
+            // 4. Bindeo los COMMANDS al INVOKER
             menu.addCommand("abrir", new AbrirCommand(documento));
             menu.addCommand("cerrar", new CerrarCommand(documento));
 
-
-            // USAGE
+            // 5. USAGE
             menu.clickEn("abrir");
             menu.clickEn("cerrar");
 

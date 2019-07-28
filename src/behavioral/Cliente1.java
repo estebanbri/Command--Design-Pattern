@@ -1,3 +1,5 @@
+package behavioral;
+
 import behavioral.ICommand;
 import behavioral.InvokerMap;
 import behavioral.Reciever1;
@@ -33,7 +35,7 @@ public class Cliente1 {
                 new DepositarCommand1(reciever1, 10)));
         ICommand cerrarCommand = new CerrarOperacionCommand3(reciever1);
 
-        // Invoker(Command)
+        // Invoker(ICommand)
         invoker.addCommand("depositar", depositarCommand);
         invoker.addCommand("retirar", retirarCommand);
         invoker.addCommand("super-command", superCommand);

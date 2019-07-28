@@ -1,3 +1,5 @@
+package behavioral;
+
 import behavioral.*;
 import behavioral.impl.CerrarOperacionCommand3;
 import behavioral.impl.DepositarCommand1;
@@ -31,7 +33,7 @@ public class Cliente2 {
                 new DepositarCommand1(reciever1, 10)));
         ICommand cerrarCommand = new CerrarOperacionCommand3(reciever1);
 
-        // Invoker(Command)
+        // Invoker(ICommand)
         invoker.addCommand(depositarCommand);
         invoker.addCommand(retirarCommand);
         invoker.addCommand(superCommand);
